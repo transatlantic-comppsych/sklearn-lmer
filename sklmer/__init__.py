@@ -1,8 +1,7 @@
-from ._template import TemplateEstimator
-from ._template import TemplateClassifier
-from ._template import TemplateTransformer
+from ._estimators import LmerRegressor
+#from ._template import TemplateClassifier
 
 from ._version import __version__
 
-__all__ = ['TemplateEstimator', 'TemplateClassifier', 'TemplateTransformer',
+__all__ = ['LmerRegressor',
            '__version__']
