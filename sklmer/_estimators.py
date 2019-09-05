@@ -25,23 +25,12 @@ class LmerRegressor(BaseEstimator, RegressorMixin):
     family: str, default='gausian'
         What family of distributions to use for the link function for the generalized model.
 
-    Attributes
-    ----------
-    model : pymer4.Lmer, 
-        Lmer model instatiated with an empty dataframe.
-    X_cols : str,
-        List of the names of the X columns.
-    predict_rfx: bool, default='False'
-        Whether or not the predict method should use random effects in the prediction.
     """
     def __init__(self, formula, X_cols, predict_rfx=False, family='gaussian'):
         args, _, _, values = inspect.getargvalues(inspect.currentframe())
         values.pop("self")
         for arg, val in values.items():
             setattr(self, arg, val)
-            
-        self.model = Lmer(formula, data=pd.DataFrame(), family=family)
-        self._response_name = self.formula.split('~')[0].strip()
         
     def _make_data(self, X=None, y=None,
                    data=None, x_only=False):
@@ -83,9 +72,11 @@ class LmerRegressor(BaseEstimator, RegressorMixin):
         self : object
             Returns self.
         """
-        self.data_ = self._make_data(X=X, y=y,  data=data)
-        
-        self.model.data = self.data_
+
+        self._response_name = self.formula.split('~')[0].strip()
+
+        self.data_ = self._make_data(X=X, y=y, data=data)
+        self.model = Lmer(self.formula, data=self.data_, family=self.family)
         
         self.model.fit(summarize=False, verbose=False)
         if self.model.warnings is not None:
