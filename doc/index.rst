@@ -9,13 +9,6 @@ This project is a simple scikit-learn estimator wrapper around pymer4, which in 
 .. toctree::
    :maxdepth: 2
    :hidden:
-   :caption: Getting Started
-
-   quick_start
-
-.. toctree::
-   :maxdepth: 2
-   :hidden:
    :caption: Documentation
 
    user_guide
@@ -28,10 +21,6 @@ This project is a simple scikit-learn estimator wrapper around pymer4, which in 
 
    auto_examples/index
 
-`Getting started <quick_start.html>`_
--------------------------------------
-
-Information regarding the estimator and how to use it.
 
 `User Guide <user_guide.html>`_
 -------------------------------
@@ -41,7 +30,7 @@ An example of narrative documentation.
 `API Documentation <api.html>`_
 -------------------------------
 
-An example of API documentation.
+API documentation.
 
 `Examples <auto_examples/index.html>`_
 --------------------------------------
