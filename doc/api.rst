@@ -1,34 +1,16 @@
 ####################
-project-template API
+sklmer API
 ####################
 
 This is an example on how to document the API of your own project.
 
-.. currentmodule:: skltemplate
+.. currentmodule:: sklmer
 
-Estimator
-=========
-
-.. autosummary::
-   :toctree: generated/
-   :template: class.rst
-
-   TemplateEstimator
-
-Transformer
-===========
+LmerRegressor
+=============
 
 .. autosummary::
    :toctree: generated/
    :template: class.rst
 
-   TemplateTransformer
-
-Predictor
-=========
-
-.. autosummary::
-   :toctree: generated/
-   :template: class.rst
-
-    TemplateClassifier
+   LmerRegressor
