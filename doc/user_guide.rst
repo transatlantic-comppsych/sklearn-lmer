@@ -2,73 +2,57 @@
 
 .. _user_guide:
 
-==================================================
-User guide: create your own scikit-learn estimator
-==================================================
+========================================================
+User guide: running mixed effects regressions in sklearn
+========================================================
 
-Estimator
----------
+Linear mixed effects regressions
+--------------------------------
 
-The central piece of transformer, regressor, and classifier is
-:class:`sklearn.base.BaseEstimator`. All estimators in scikit-learn are derived
-from this class. In more details, this base class enables to set and get
-parameters of the estimator. It can be imported as::
+Linear mixed effects regressions are great, but if you're here,
+you probably already agree. You can find more infomration about
+them elsewhere. 
 
-    >>> from sklearn.base import BaseEstimator
+This is a simple package to wrap
+the convienience of pymer4's lme4 wrapping in a *mostly* sklearn
+compatible regressor class.
 
-Once imported, you can create a class which inherate from this base class::
+Installation
+------------
 
-    >>> class MyOwnEstimator(BaseEstimator):
-    ...     pass
+Mixing r and python used to be a bit more fraught, but rpy2 and conda
+seem to be working together better these days.
+To install first get a conda environment with the dependencies::
 
+   >>> conda create -n sklmer numpy scipy rpy2=2.9.4 r-lme4 r-lmertest r-lsmeans tzlocal
 
-Predictor
----------
+Then pip install sklearn-lmer::
 
-Regressor
-~~~~~~~~~
+   >>> pip install sklearn-lmer
 
-Similarly, regressors are scikit-learn estimators which implement a ``predict``
-method. The use case is the following:
+Usage
+-----
+It can be imported as::
 
-* at ``fit``, some parameters can be learned from ``X`` and ``y``;
-* at ``predict``, predictions will be computed using ``X`` using the parameters
-  learned during ``fit``.
+    >>> from sklmer import LmerRegressor
 
-In addition, scikit-learn provides a mixin_, i.e.
-:class:`sklearn.base.RegressorMixin`, which implements the ``score`` method
-which computes the :math:`R^2` score of the predictions.
+Now the *mostly* part of that compatiblity is that init does have two required paramters:
+a formula and the names of the columns holding independent variables and grouping variables
+(I've called this parameter ``X_cols`` even though it is more than just X). When I use this I've got my data in a dataframe and just pass ``dataframe.columns`` with ``X_cols`` like so ::
 
-One can import the mixin as::
+    >>> df = pd.read_csv(os.path.join(get_resource_path(),'sample_data.csv'))
+    >>> lreg = LmerRegressor('DV ~ IV2 + (IV2|Group)', X_cols=df.columns)
 
-    >>> from sklearn.base import RegressorMixin
+If you want the best compatibility with sklearn it probably makes sense to split
+out the dataframe into X, y, and group variables, though since you've defined a formula
+it's ok if the y and group columns are in X ::
 
-Therefore, we create a regressor, :class:`MyOwnRegressor` which inherits from
-both :class:`sklearn.base.BaseEstimator` and
-:class:`sklearn.base.RegressorMixin`. The method ``fit`` gets ``X`` and ``y``
-as input and should return ``self``. It should implement the ``predict``
-function which should output the predictions of your regressor::
+   >>> X = df.values
+   >>> y = df.DV.values
+   >>> groups = df.Group.values
 
-    >>> import numpy as np
-    >>> class MyOwnRegressor(BaseEstimator, RegressorMixin):
-    ...     def fit(self, X, y):
-    ...         return self
-    ...     def predict(self, X):
-    ...         return np.mean(X, axis=1)
+Once you've done that, it seems to work fine with other sklearn tools, like ``cross_val_score`` ::
 
-We illustrate that this regressor is working within a scikit-learn pipeline::
-
-    >>> from sklearn.datasets import load_diabetes
-    >>> X, y = load_diabetes(return_X_y=True)
-    >>> pipe = make_pipeline(MyOwnTransformer(), MyOwnRegressor())
-    >>> pipe.fit(X, y)  # doctest: +ELLIPSIS
-    Pipeline(...)
-    >>> pipe.predict(X)  # doctest: +ELLIPSIS
-    array([...])
-
-Since we inherit from the :class:`sklearn.base.RegressorMixin`, we can call
-the ``score`` method which will return the :math:`R^2` score::
-
-    >>> pipe.score(X, y)  # doctest: +ELLIPSIS
-    -3.9...
+   >>> logo = LeaveOneGroupOut()
+   >>> cross_val_score(lreg, X=X, y=y, cv=logo.split(X, groups=groups), scoring='neg_mean_squared_error')
 
