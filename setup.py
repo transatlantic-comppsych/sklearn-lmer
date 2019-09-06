@@ -21,7 +21,7 @@ URL = 'https://github.com/nimh-mbdu/sklearn-lmer'
 LICENSE = 'CC0'
 DOWNLOAD_URL = 'https://github.com/nimh-mbdu/sklearn-lmer'
 VERSION = __version__
-INSTALL_REQUIRES = ['numpy', 'scipy', 'scikit-learn', 'pandas', 'pymer4', 'rpy2=2.9.4']
+INSTALL_REQUIRES = ['numpy', 'scipy', 'scikit-learn', 'pandas', 'pymer4']
 CLASSIFIERS = ['Intended Audience :: Science/Research',
                'License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication',
                'Programming Language :: Python',
