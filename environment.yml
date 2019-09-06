@@ -13,3 +13,12 @@ dependencies:
   - r-lmertest
   - r-lsmeans
   - tzlocal
+  - pip
+  - sphinx
+  - mock
+  - pillow
+  - sphinx_rtd_theme
+  - matplotlib
+  - pip:
+    - pymer4
+    - numpydoc

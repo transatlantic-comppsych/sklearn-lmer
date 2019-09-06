@@ -5,8 +5,5 @@ requirements_file: requirements.txt
 conda:
     file: environment.yml
 python:
-  pip_install: true
-  extra_requirements:
-    - tests
-    - docs
+  pip_install: false
   
