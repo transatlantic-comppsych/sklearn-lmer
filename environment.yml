@@ -5,9 +5,10 @@ dependencies:
   - numpy
   - scipy
   - scikit-learn
+  - pandas=0.25.1
   - pytest
   - pytest-cov
-  - rpy2
+  - rpy2=2.9.4
   - r-lme4
   - r-lmertest
   - r-lsmeans
