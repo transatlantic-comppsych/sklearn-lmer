@@ -21,13 +21,12 @@
 sklearn-lmer - Scikit-learn estimator wrappers for pymer4 wrapped LME4 mixed effects models
 ===========================================================================================
 
-.. _scikit-learn: https://scikit-learn.org
+.. _sklearn: https://scikit-learn.org
 .. _pymer4: http://eshinjolly.com/pymer4/
 .. _lme4: https://cran.r-project.org/web/packages/lme4/index.html
 .. _documentation: https://sklearn-lmer.readthedocs.io/en/latest/
 
-**sklearn-lmer** 
-is a simple package to wrap the convienience 
+sklearn-lmer is a simple package to wrap the convienience 
 of pymer4_'s lme4_ wrapping in a *mostly* sklearn_ compatible regressor class.
 
 Refer to the documentation_ for examples and api.
