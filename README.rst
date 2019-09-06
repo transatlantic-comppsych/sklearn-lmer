@@ -5,7 +5,7 @@
 .. |Travis| image:: https://travis-ci.org/nimh-mbdu/sklearn-lmer.svg?branch=master
 .. _Travis: https://travis-ci.org/nimh-mbdu/sklearn-lmer
 
-.. |AppVeyor| image:: https://ci.appveyor.com/api/projects/status/pifxyfnev94kbej4?svg=true
+.. |AppVeyor| image:: https://ci.appveyor.com/api/projects/status/pifxyfnev94kbej4/branch/master?svg=true
 .. _AppVeyor: https://ci.appveyor.com/project/Shotgunosine/sklearn-lmer/branch/master
 
 .. |Codecov| image:: https://codecov.io/gh/nimh-mbdu/sklearn-lmer/branch/master/graph/badge.svg
