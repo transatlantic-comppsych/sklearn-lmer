@@ -1,5 +1,5 @@
 """
-This is a module to be used as a reference for building other modules
+This module contains sklearn wrappers for pymer4
 """
 import numpy as np
 from sklearn.base import BaseEstimator, RegressorMixin
@@ -26,23 +26,25 @@ class LmerRegressor(BaseEstimator, RegressorMixin):
         What family of distributions to use for the link function for the generalized model.
 
     """
-    def __init__(self, formula, X_cols, predict_rfx=False, family='gaussian'):
+
+    def __init__(self, formula, X_cols, predict_rfx=False, family="gaussian"):
         args, _, _, values = inspect.getargvalues(inspect.currentframe())
         values.pop("self")
         for arg, val in values.items():
             setattr(self, arg, val)
-        
-    def _make_data(self, X=None, y=None,
-                   data=None, x_only=False):
-        
+
+    def _make_data(self, X=None, y=None, data=None, x_only=False):
+
         if data is None:
             if x_only:
-                assert X is not None, "If you don't pass data you must pass X"
+                if X is None:
+                    raise ValueError("If you don't pass data you must pass X")
 
                 # Make a dataframe out of X
                 data = pd.DataFrame(X, columns=self.X_cols)
             else:
-                assert X is not None and y is not None, "If you don't pass data you must pass X and y"
+                if X is None or y is None:
+                    raise ValueError("If you don't pass data you must pass X and y")
 
                 # Check that X and y have correct shape
                 X, y = check_X_y(X, y)
@@ -52,8 +54,8 @@ class LmerRegressor(BaseEstimator, RegressorMixin):
                 data[self._response_name] = y
         else:
             data = data.copy()
-        return data        
-    
+        return data
+
     def fit(self, X=None, y=None, data=None):
         """ Fit the specified mixed effects model.
 
@@ -73,23 +75,25 @@ class LmerRegressor(BaseEstimator, RegressorMixin):
             Returns self.
         """
 
-        self._response_name = self.formula.split('~')[0].strip()
+        self._response_name = self.formula.split("~")[0].strip()
 
         self.data_ = self._make_data(X=X, y=y, data=data)
         self.model = Lmer(self.formula, data=self.data_, family=self.family)
-        
+
         self.model.fit(summarize=False, verbose=False)
         if self.model.warnings is not None:
-            if ('converge' in self.model.warnings) | np.any(['converge' in mw for mw in self.model.warnings]):
+            if ("converge" in self.model.warnings) | np.any(
+                ["converge" in mw for mw in self.model.warnings]
+            ):
                 self.converged = False
             else:
-                self.converged = True 
+                self.converged = True
         else:
             self.converged = True
-        self.coef_ = self.model.coefs.iloc[1:,0].values
-        self.intercept_ = self.model.coefs.iloc[0,0]
+        self.coef_ = self.model.coefs.iloc[1:, 0].values
+        self.intercept_ = self.model.coefs.iloc[0, 0]
         return self
-    
+
     def predict(self, X=None, data=None, **kwargs):
         """ Predict based on the fitted mixed effects model.
 
@@ -109,12 +113,11 @@ class LmerRegressor(BaseEstimator, RegressorMixin):
         y : ndarray, shape (n_samples,)
             Returns predicted values
         """
-        check_is_fitted(self, ['data_', 'converged'])
-        
+        check_is_fitted(self, ["data_", "converged"])
+
         data = self._make_data(X, data=data, x_only=True)
         try:
-            use_rfx = kwargs['use_rfx']
+            use_rfx = kwargs["use_rfx"]
         except KeyError:
             use_rfx = self.predict_rfx
         return self.model.predict(data, use_rfx, **kwargs)
-
