@@ -22,10 +22,15 @@ def test_LmerRegressor(data):
     assert_allclose(lreg.coef_, expected_coef)
 
     lreg = LmerRegressor("DV ~ IV2 + (IV2|Group)", X_cols=data.columns)
+    with pytest.raises(ValueError):
+        lreg.fit()
+
+    lreg = LmerRegressor("DV ~ IV2 + (IV2|Group)", X_cols=data.columns)
     lreg.fit(X=data.values, y=data.DV.values)
     assert_allclose(lreg.coef_, expected_coef)
-
     lreg.predict(data=data)
+    with pytest.raises(ValueError):
+        lreg.predict()
 
     expected_norfx_score = 0.5035556907587277
     assert np.isclose(lreg.score(X=data.values, y=data.DV.values), expected_norfx_score)
