@@ -26,8 +26,9 @@ sklearn-lmer - Scikit-learn estimator wrappers for pymer4 wrapped LME4 mixed eff
 .. _lme4: https://cran.r-project.org/web/packages/lme4/index.html
 .. _documentation: https://sklearn-lmer.readthedocs.io/en/latest/
 
-**sklearn-lmer** is a simple package to wrap the convienience
- of pymer4_'s lme4_ wrapping in a *mostly* sklearn_ compatible regressor class.
+**sklearn-lmer** 
+is a simple package to wrap the convienience 
+of pymer4_'s lme4_ wrapping in a *mostly* sklearn_ compatible regressor class.
 
 Refer to the documentation_ for examples and api.
 
@@ -36,7 +37,7 @@ Linear mixed effects regressions
 
 Linear mixed effects regressions are great, but if you're here,
 you probably already agree. You can find more infomration about
-them elsewhere. 
+them elsewhere, the links lme4_ aren't a bad place to start. 
 
 Installation
 ------------
