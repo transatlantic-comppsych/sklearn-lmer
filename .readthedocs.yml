@@ -2,7 +2,6 @@ version: 2
 
 formats: []
 
-requirements_file: requirements.txt
 conda:
     environment: environment.yml
 python:
