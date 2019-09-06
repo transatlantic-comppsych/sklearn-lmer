@@ -1,11 +1,11 @@
 formats:
   - none
-conda:
-  environment: environment.yml
+
 requirements_file: requirements.txt
 python:
   pip_install: true
   extra_requirements:
     - tests
     - docs
-
+  conda:
+    environment: environment.yml
