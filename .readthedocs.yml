@@ -3,9 +3,10 @@ formats:
 
 requirements_file: requirements.txt
 python:
+  conda:
+    environment: environment.yml
   pip_install: true
   extra_requirements:
     - tests
     - docs
-  conda:
-    environment: environment.yml
+  
