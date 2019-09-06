@@ -3,6 +3,7 @@
 
 import codecs
 import os
+import versioneer
 
 from setuptools import find_packages, setup
 
@@ -49,7 +50,8 @@ setup(name=DISTNAME,
       description=DESCRIPTION,
       license=LICENSE,
       url=URL,
-      version=VERSION,
+      version=versioneer.get_version(),
+      cmdclass=versioneer.get_cmdclass(),
       download_url=DOWNLOAD_URL,
       long_description=LONG_DESCRIPTION,
       zip_safe=False,  # the package can run out of an .egg file

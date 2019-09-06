@@ -1,1 +1,3 @@
 include requirements.txt
+include versioneer.py
+include sklmer/_version.py
