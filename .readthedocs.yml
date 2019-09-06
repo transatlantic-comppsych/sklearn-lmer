@@ -1,9 +1,13 @@
-formats:
-  - none
+version: 2
+
+formats: []
 
 requirements_file: requirements.txt
 conda:
-    file: environment.yml
+    environment: environment.yml
 python:
-  pip_install: false
+  version: 3.7
+  install:
+    method: pip
+    path: .
   
