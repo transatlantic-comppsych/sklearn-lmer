@@ -1,6 +1,7 @@
 name: sklmer_dev
 channels:
   - defaults
+  - conda-forge
 dependencies:
   - numpy
   - scipy
@@ -8,7 +9,7 @@ dependencies:
   - pandas=0.25.1
   - pytest
   - pytest-cov
-  - rpy2=2.9.4
+  - rpy2
   - r-lme4
   - r-lmertest
   - r-lsmeans
