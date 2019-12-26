@@ -38,3 +38,16 @@ def test_LmerRegressor(data):
     lreg.predict_rfx = True
     expected_rfx_score = 0.8854319828487308
     assert np.isclose(lreg.score(X=data.values, y=data.DV.values), expected_rfx_score)
+
+
+def test_LmerRegressor_fitkwargs(data):
+    lreg = LmerRegressor(
+        "DV ~ IV2 + (IV2|Group)",
+        X_cols=data.columns,
+        fit_kwargs={
+            "control": "optimizer='Nelder_Mead', optCtrl = list(FtolAbs=1e-8, XtolRel=1e-8)"
+        },
+    )
+    lreg.fit(data=data)
+    expected_coef = np.array([0.68212031])
+    assert_allclose(lreg.coef_, expected_coef)

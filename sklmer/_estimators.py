@@ -24,10 +24,13 @@ class LmerRegressor(BaseEstimator, RegressorMixin):
         Whether or not the predict method should use random effects in the prediction.
     family: str, default='gausian'
         What family of distributions to use for the link function for the generalized model.
-
+    fit_kwargs: dict, defalut='{}'
+        Dictionary of options to pass to lmer fit. See http://eshinjolly.com/pymer4/api.html
     """
 
-    def __init__(self, formula, X_cols, predict_rfx=False, family="gaussian"):
+    def __init__(
+        self, formula, X_cols, predict_rfx=False, family="gaussian", fit_kwargs={}
+    ):
         args, _, _, values = inspect.getargvalues(inspect.currentframe())
         values.pop("self")
         for arg, val in values.items():
@@ -80,7 +83,7 @@ class LmerRegressor(BaseEstimator, RegressorMixin):
         self.data_ = self._make_data(X=X, y=y, data=data)
         self.model = Lmer(self.formula, data=self.data_, family=self.family)
 
-        self.model.fit(summarize=False, verbose=False)
+        self.model.fit(summarize=False, verbose=False, **self.fit_kwargs)
         if self.model.warnings is not None:
             if ("converge" in self.model.warnings) | np.any(
                 ["converge" in mw for mw in self.model.warnings]
