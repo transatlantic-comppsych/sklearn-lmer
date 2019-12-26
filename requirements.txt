@@ -3,3 +3,6 @@ scipy
 scikit-learn
 pandas
 pymer4
+numpydoc
+sphinx_gallery
+matplotlib
