@@ -1,6 +1,6 @@
 .. _general_examples:
 
-General examples
+Basic sklmer example
 ================
 
-Introductory examples.
+This example demonstrates sklmer's basic functionality.
