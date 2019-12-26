@@ -11,6 +11,6 @@ python:
     - requirements: docs/requirements.txt
     - method: setuptools
       path: .
-      extra_requirments:
+      extra_requirements:
         - doc
   
