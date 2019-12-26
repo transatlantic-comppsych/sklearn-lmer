@@ -1,6 +1,8 @@
-name: sklmer_dev
+name: 
+  - sklmer_dev
 channels:
   - conda-forge
+verbose:
 dependencies:
   - pytest
   - pytest-cov
