@@ -6,3 +6,5 @@ dependencies:
   - pytest-cov
   - tzlocal
   - rpy2
+  - r-lme4
+  - r-lmertest
