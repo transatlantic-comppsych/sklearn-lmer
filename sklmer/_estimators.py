@@ -82,7 +82,6 @@ class LmerRegressor(BaseEstimator, RegressorMixin):
 
         self.data_ = self._make_data(X=X, y=y, data=data)
         self.model = Lmer(self.formula, data=self.data_, family=self.family)
-
         self.model.fit(summarize=False, verbose=False, **self.fit_kwargs)
         if self.model.warnings is not None:
             if ("converge" in self.model.warnings) | np.any(
@@ -121,6 +120,7 @@ class LmerRegressor(BaseEstimator, RegressorMixin):
         data = self._make_data(X, data=data, x_only=True)
         try:
             use_rfx = kwargs["use_rfx"]
+            kwargs.pop("use_rfx")
         except KeyError:
             use_rfx = self.predict_rfx
         return self.model.predict(data, use_rfx, **kwargs)

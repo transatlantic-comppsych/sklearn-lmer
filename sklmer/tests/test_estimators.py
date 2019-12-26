@@ -31,6 +31,7 @@ def test_LmerRegressor(data):
     lreg.predict(data=data)
     with pytest.raises(ValueError):
         lreg.predict()
+    lreg.predict(data=data, use_rfx=True)
 
     expected_norfx_score = 0.5035556907587277
     assert np.isclose(lreg.score(X=data.values, y=data.DV.values), expected_norfx_score)
@@ -51,3 +52,4 @@ def test_LmerRegressor_fitkwargs(data):
     lreg.fit(data=data)
     expected_coef = np.array([0.68212031])
     assert_allclose(lreg.coef_, expected_coef)
+    assert lreg.converged
