@@ -1,18 +1,8 @@
 name: sklmer_dev
 channels:
-  - defaults
   - conda-forge
 dependencies:
   - pytest
   - pytest-cov
   - tzlocal
-  - pip
-  - sphinx
-  - mock
-  - pillow
-  - sphinx_rtd_theme
-  - matplotlib
-  - pip:
-    - pymer4
-    - numpydoc
-    - sphinx_gallery
+  - rpy2

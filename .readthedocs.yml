@@ -2,10 +2,11 @@ version: 2
 
 formats: []
 
+conda:
+    environment: rtd_environment.yml
 python:
   version: 3.7
   install:
-    - requirements: requirements.txt
     - method: setuptools
       path: .
   
