@@ -7,6 +7,5 @@ dependencies:
   - tzlocal
   - rpy2
   - pip:
-    - pymer4
     - numpydoc
     - sphinx_gallery
