@@ -7,9 +7,8 @@ conda:
 python:
   version: 3.7
   install:
-    - requirements: requirements.txt
     - requirements: docs/requirements.txt
-    - method: setuptools
+    - method: pip
       path: .
       extra_requirements:
         - doc
