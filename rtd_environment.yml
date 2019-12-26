@@ -6,6 +6,3 @@ dependencies:
   - pytest-cov
   - tzlocal
   - rpy2
-  - pip:
-    - numpydoc
-    - sphinx_gallery
