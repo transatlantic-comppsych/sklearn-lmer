@@ -45,7 +45,7 @@ Mixing r and python used to be a bit more fraught, but rpy2 and conda
 seem to be working together better these days.
 To install first get a conda environment with the dependencies::
 
-   >>> conda create -n sklmer numpy scipy rpy2=2.9.4 r-lme4 r-lmertest r-lsmeans tzlocal
+   >>> conda create -n sklmer -c conda-forge numpy scipy rpy2 r-lme4 r-lmertest r-lsmeans tzlocal
 
 Then pip install sklearn-lmer::
 
