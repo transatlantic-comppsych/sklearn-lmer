@@ -12,8 +12,8 @@
   :target: https://codecov.io/gh/nimh-mbdu/sklearn-lmer
 .. _Codecov: https://codecov.io/gh/nimh-mbdu/sklearn-lmer
 
-.. |CircleCI| image:: https://circleci.com/gh/nimh-mbdu/sklearn-lmer.svg?style=shield&circle-token=:circle-token
-.. _CircleCI: https://circleci.com/gh/nimh-mbdu/sklearn-lmer/tree/master
+.. |CircleCI| image:: https://circleci.com/gh/nimh-comppsych/sklearn-lmer.svg?style=shield&circle-token=:circle-token
+.. _CircleCI: https://circleci.com/gh/nimh-comppsych/sklearn-lmer/tree/master
 
 .. |ReadTheDocs| image:: https://readthedocs.org/projects/sklearn-lmer/badge/?version=latest
 .. _ReadTheDocs: https://sklearn-lmer.readthedocs.io/en/latest/?badge=latest
