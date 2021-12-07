@@ -2,15 +2,15 @@
 
 |Travis|_ |AppVeyor|_ |Codecov|_ |CircleCI|_ |ReadTheDocs|_
 
-.. |Travis| image:: https://travis-ci.org/nimh-mbdu/sklearn-lmer.svg?branch=master
-.. _Travis: https://travis-ci.org/nimh-mbdu/sklearn-lmer
+.. |Travis| image:: https://travis-ci.org/nimh-comppsych/sklearn-lmer.svg?branch=master
+.. _Travis: https://travis-ci.org/nimh-comppsych/sklearn-lmer
 
 .. |AppVeyor| image:: https://ci.appveyor.com/api/projects/status/pifxyfnev94kbej4/branch/master?svg=true
 .. _AppVeyor: https://ci.appveyor.com/project/Shotgunosine/sklearn-lmer/branch/master
 
-.. |Codecov| image:: https://codecov.io/gh/nimh-mbdu/sklearn-lmer/branch/master/graph/badge.svg
-  :target: https://codecov.io/gh/nimh-mbdu/sklearn-lmer
-.. _Codecov: https://codecov.io/gh/nimh-mbdu/sklearn-lmer
+.. |Codecov| image:: https://codecov.io/gh/nimh-comppsych/sklearn-lmer/branch/master/graph/badge.svg
+  :target: https://codecov.io/gh/nimh-comppsych/sklearn-lmer
+.. _Codecov: https://codecov.io/gh/nimh-comppsych/sklearn-lmer
 
 .. |CircleCI| image:: https://circleci.com/gh/nimh-comppsych/sklearn-lmer.svg?style=shield&circle-token=:circle-token
 .. _CircleCI: https://circleci.com/gh/nimh-comppsych/sklearn-lmer/tree/master
